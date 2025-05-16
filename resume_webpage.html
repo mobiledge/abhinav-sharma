@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e40af;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f3f4f6;
+            --white: #ffffff;
+            --section-spacing: 2.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 3rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-info svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        main {
+            background-color: var(--white);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-radius: 0.5rem;
+            margin: -2rem auto 3rem;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: var(--section-spacing);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .experience-item, .education-item, .project-item {
+            margin-bottom: 2rem;
+        }
+
+        .experience-item:last-child, .education-item:last-child, .project-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-header, .education-header, .project-header {
+            margin-bottom: 0.75rem;
+        }
+
+        .title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .job-title, .degree, .project-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .company, .institution, .project-tech {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .duration {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .location {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin-top: 0.75rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary-dark);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-item {
+            background-color: var(--bg-light);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .languages-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .language-name {
+            font-weight: 500;
+        }
+
+        .language-level {
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .title-row {
+                flex-direction: column;
+                gap: 0.25rem;
+                align-items: flex-start;
+            }
+            
+            main {
+                padding: 1.5rem;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background-color: var(--white);
+            }
+            
+            header {
+                color: var(--text-dark);
+                background-color: var(--white);
+                padding: 1rem 0;
+            }
+            
+            main {
+                box-shadow: none;
+                margin: 0;
+                padding: 1rem 0;
+            }
+            
+            .section-title {
+                color: var(--text-dark);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1>Abhinav Sharma</h1>
+            <p class="tagline">Machine Learning Researcher & Data Scientist</p>
+            <div class="contact-info">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    437-477-3117
+                </span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    abhinav.sharma.ml@gmail.com
+                </span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
+                    <a href="https://www.linkedin.com/in/abhinav-sharma-777043146/" target="_blank" style="color: white; text-decoration: none;">LinkedIn</a>
+                </span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Oshawa, Ontario, Canada
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <section>
+                <h2 class="section-title">Education</h2>
+                
+                <div class="education-item">
+                    <div class="education-header">
+                        <div class="title-row">
+                            <span class="degree">Masters in Computer Science</span>
+                            <span class="duration">Jan. 2023 – Dec. 2024</span>
+                        </div>
+                        <div class="title-row">
+                            <span class="institution">Ontario Tech University</span>
+                            <span class="location">Oshawa, Ontario, Canada</span>
+                        </div>
+                    </div>
+                    <p>Research Thesis: Enhancing Medical Image-Text Representation Learning</p>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-header">
+                        <div class="title-row">
+                            <span class="degree">Applied MSC in Data Science and AI</span>
+                            <span class="duration">Oct. 2019 – Oct. 2020</span>
+                        </div>
+                        <div class="title-row">
+                            <span class="institution">Data Science Tech Institute</span>
+                            <span class="location">Sophia Antipolis, Biot, France</span>
+                        </div>
+                    </div>
+                    <p>First Class Honors Degree</p>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-header">
+                        <div class="title-row">
+                            <span class="degree">Bachelors of Science in Industrial Engineering</span>
+                            <span class="duration">Sept. 2016 – Jun. 2019</span>
+                        </div>
+                        <div class="title-row">
+                            <span class="institution">Eastern Mediterranean University</span>
+                            <span class="location">Famagusta, Cyprus</span>
+                        </div>
+                    </div>
+                    <p>Honours Degree</p>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="title-row">
+                            <span class="job-title">Graduate Research and Teaching Assistant</span>
+                            <span class="duration">Jan. 2023 – April 2025</span>
+                        </div>
+                        <div class="title-row">
+                            <span class="company">Computer Science Department, Ontario Tech University</span>
+                            <span class="location">Oshawa, Ontario, Canada</span>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>GRA: Research in machine learning for medical imaging, focusing on contrastive learning and embedding alignment techniques. Integrated vision-language encoders (ViT and BERT) using Pytorch, with similar principles used in modern LLM grounded visual systems.</li>
+                        <li>Taught tutorials, labs sessions, marked assignments and exams for the following Undergraduate courses: Programming in Python (first year course), Computer Architecture (Second Year course), Design and Analysis of Algorithms (3rd year), Artificial intelligence (fourth year course).</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="title-row">
+                            <span class="job-title">Associate Machine Learning Engineer</span>
+                            <span class="duration">Sept. 2021 – Sept. 2022</span>
+                        </div>
+                        <div class="title-row">
+                            <span class="company">Armis Tech</span>
+                            <span class="location">Kathmandu, Nepal</span>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Developed an image detection and classification model for hotel images, improved inference speed and reliability using optimized PyTorch pipelines.</li>
+                        <li>Collaborated with engineers to deploy containerized models (Docker) with REST APIs, supporting high-throughput environments.</li>
+                        <li>Led meetings and delivered product pitches to multiple hotels, effectively showcasing features and benefits to drive engagement and adoption. (Made deals with multiple hotels)</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="title-row">
+                            <span class="job-title">Research Intern</span>
+                            <span class="duration">May. 2020 – Oct. 2020</span>
+                        </div>
+                        <div class="title-row">
+                            <span class="company">Amadeus</span>
+                            <span class="location">Sophia Antipolis, Biot, France</span>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Designed and optimized a CNN model to rank images by 'attractiveness', leading to an increase in ranking accuracy compared to the baseline model.</li>
+                        <li>Implemented K-Means Clustering and explored other clustering techniques, improving image categorization accuracy.</li>
+                        <li>Made an impact by improving process efficiency and faster decision-making by making the project iterable to improve itself over sprints.</li>
+                        <li>Presented the B.I team's project to the Hotel Distribution division, increasing team visibility and knowledge sharing.</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="title-row">
+                            <span class="job-title">Operations Assistance</span>
+                            <span class="duration">Mar. 2014 – Mar. 2016</span>
+                        </div>
+                        <div class="title-row">
+                            <span class="company">K-Marketing PVT. LTD</span>
+                            <span class="location">Kathmandu, Nepal</span>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Collaborated with various business units to propose solutions, improving issue resolution speed.</li>
+                        <li>Created and maintained spreadsheets of the Supply Chain, resulting in reduction in errors and an improvement in inventory tracking accuracy, as reported by the manager.</li>
+                        <li>Logged logistic operations, decreasing the frequency of operational disruptions.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Projects</h2>
+                
+                <div class="project-item">
+                    <div class="project-header">
+                        <div class="title-row">
+                            <span class="project-title">Hybrid ConVIRT (Medical Imaging)</span>
+                            <span class="duration">Jan. 2023 – Dec. 2024</span>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Developed a hybrid model combining ConVIRT and MedCLIP using contrastive learning and knowledge distillation. Incorporated prompt engineering and ensembling techniques to improve zero-shot classification.</li>
+                        <li>Designed reusable evaluation workflows involving zero-shot classification and prompt ensembling. Contributing to scalable model benchmarking.</li>
+                        <li>Integrated ViT and CXR-BERT-specialized in a dual-encoder framework. Evaluated model through cosine similarity-based retrieval and semantic alignment.</li>
+                        <li>The training/testing workloads were split across multiple GPUs (3× RTX 2080s), facilitating faster iteration and reproducible contrastive learning experiments.</li>
+                    </ul>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-header">
+                        <div class="title-row">
+                            <span class="project-title">Multichannel Microscopy Classification</span>
+                            <span class="duration">May 2023 – June. 2023</span>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Built a balanced subset from the Rxrx1 dataset, focusing on four cell types (HEPG2, HUVEC, RPE, U2OS) and implemented ML models for classification.</li>
+                        <li>Achieved robust performance metrics in testing and validation.</li>
+                    </ul>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-header">
+                        <div class="title-row">
+                            <span class="project-title">Brain Tumor Classification Study</span>
+                            <span class="duration">Jan 2023 – April 2023</span>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Investigating the Effects of Transfer Learning on Multi-class Brain Tumor Classification.</li>
+                        <li>Experimented with various common CNN architectures.</li>
+                    </ul>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-header">
+                        <div class="title-row">
+                            <span class="project-title">NLP- Author Identification</span>
+                            <span class="duration">Oct. 2019 – Dec. 2019</span>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Developed a handwriting recognition system using a Random Forest classifier to identify authors.</li>
+                        <li>Preprocessed datasets with feature extraction and normalization for model training.</li>
+                        <li>Evaluated model using accuracy, precision, recall, and F1 score.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Technical Skills</h2>
+                
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Programming</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Object Oriented Design</span>
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">SQL</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Machine Learning Frameworks</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">TensorFlow</span>
+                            <span class="skill-item">PyTorch</span>
+                            <span class="skill-item">Scikit-learn</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Developer Tools</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Jupyter Notebook</span>
+                            <span class="skill-item">PyCharm</span>
+                            <span class="skill-item">Docker</span>
+                            <span class="skill-item">Linux</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Data Libraries</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Pandas</span>
+                            <span class="skill-item">NumPy</span>
+                            <span class="skill-item">Matplotlib</span>
+                            <span class="skill-item">SciPy</span>
+                            <span class="skill-item">Seaborn</span>
+                            <span class="skill-item">OpenCV</span>
+                            <span class="skill-item">NLTK</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Mathematics & Statistics</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Calculus</span>
+                            <span class="skill-item">Matrix Operations</span>
+                            <span class="skill-item">Probability</span>
+                            <span class="skill-item">Regression Analysis</span>
+                            <span class="skill-item">Hypothesis Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Languages</h2>
+                
+                <div class="languages-section">
+                    <div class="language-item">
+                        <span class="language-name">English</span>
+                        <span class="language-level">Advanced</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">Nepalese</span>
+                        <span class="language-level">Intermediate</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">French</span>
+                        <span class="language-level">Beginner</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">Hindi</span>
+                        <span class="language-level">Beginner</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
